@@ -27,9 +27,6 @@ class CubeTests(TestCase):
         self.assertEqual(cube.position, position)
         self.assertEqual(len(cube._primitives), lines_number(dimensions))
 
-    def test_strings_a_3(self):
-        self.assertEqual('a' * 3, 'aaa')
-
 
 if __name__ == '__main__':
     unittest.main()
