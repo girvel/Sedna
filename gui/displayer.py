@@ -15,5 +15,8 @@ class Displayer(Canvas):
             self.size_y / 2 - y2,
             *args, **kw)
 
-    def draw_line(self, line, arrow=None):
-        self.create_line(*(line.v1 & line.v2).coordinates, arrow=arrow)
+    def draw_primitive(self, primitive):
+        self.create_line(
+            *(primitive.line.v1 & primitive.line.v2).coordinates,
+            arrow=primitive.arrow,
+            fill=primitive.color)

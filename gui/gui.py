@@ -13,9 +13,9 @@ class MainFrame:
         self.__root = Tk()
 
         self.displayer = Displayer(self.__root, 500, 500)
-        self.projector = Projector([Vector(100, 0), Vector(-35, 60), Vector(0, 100), Vector(-58, -58)])
+        self.projector = Projector()
 
-        self.projector.models.append(create_cube(50, 4, position=Vector(50, 50, 50, 50)))
+        self.projector.models.append(create_cube(50, 4, position=Vector(50, 50, 50, 50), color="blue"))
         self.update()
 
         self.displayer.pack()
@@ -24,13 +24,12 @@ class MainFrame:
 
     def on_button1(self, event):
         self.projector.models[0].rotate(0, 1, math.pi / 16)
-        print("\n\n" + "\n".join(str(l) for l in self.projector.models[0].lines))
         self.update()
 
     def update(self):
         self.displayer.delete(ALL)
         for line in self.projector.get_vision(51):
-            self.displayer.draw_line(line)
+            self.displayer.draw_primitive(line)
 
     def mainloop(self):
         self.__root.mainloop()
