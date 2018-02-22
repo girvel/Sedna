@@ -15,12 +15,15 @@ class MainFrame:
         self.displayer = Displayer(self.__root, 500, 500)
         self.projector = Projector()
 
-        self.projector.models.append(create_cube(50, 4, position=Vector(50, 50, 50, 50), color="blue"))
-        self.update()
-
         self.displayer.pack()
 
         self.__root.bind('<Button-1>', self.on_button1)
+
+    def run(self):
+        self.projector.models.append(create_cube(50, 4, position=Vector(50, 50, 50, 50), color="blue"))
+        self.update()
+
+        self.__root.mainloop()
 
     def on_button1(self, event):
         self.projector.models[0].rotate(0, 1, math.pi / 16)
@@ -30,6 +33,3 @@ class MainFrame:
         self.displayer.delete(ALL)
         for line in self.projector.get_vision(51):
             self.displayer.draw_primitive(line)
-
-    def mainloop(self):
-        self.__root.mainloop()

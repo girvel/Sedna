@@ -9,7 +9,7 @@ class Projector:
 
     def get_vision(self, d):
         result = []
-        for p in sum([m.get_final_primitives for m in self.models], []):
+        for p in sum([m.get_final_primitives() for m in self.models], []):
             result.append(
                 Primitive(
                     Line(

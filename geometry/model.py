@@ -7,9 +7,8 @@ class Model:
         self.__primitives = primitives
         self.position = Vector.get_zero_vector(dimensions) if position is None else position
 
-    @property
     def get_final_primitives(self):
-        return [Primitive(p.line, p.color, p.arrow) for p in self.__primitives]
+        return [Primitive(p.line + self.position, p.color, p.arrow) for p in self.__primitives]
 
     def rotate(self, dim1, dim2, angle):
         for p in self.__primitives:
