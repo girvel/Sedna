@@ -6,12 +6,6 @@ from geometry.vector import Vector
 
 
 class CubeTests(TestCase):
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
     def test_create_cube(self):
         def lines_number(d):
             return 1 if d == 1 else 2 * lines_number(d - 1) + 2**(d - 1)
