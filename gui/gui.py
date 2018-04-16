@@ -25,8 +25,11 @@ class MainFrame:
         self.__root.bind('<F4>', lambda e: self.rotate(1, 2))
         self.__root.bind('<F5>', lambda e: self.rotate(1, 3))
         self.__root.bind('<F6>', lambda e: self.rotate(2, 3))
+        self.__root.bind('r', lambda e: self.reset())
+        self.__root.bind('R', lambda e: self.reset())
 
-    def run(self):
+    def reset(self):
+        self.projector.models.clear()
         self.projector.models.append(
             create_cube(500, self.dimensions, position=Vector(-250, -250, 50, 10), color="blue")
         )
@@ -36,6 +39,9 @@ class MainFrame:
         )
 
         self.update()
+
+    def run(self):
+        self.reset()
 
         self.__root.mainloop()
 
