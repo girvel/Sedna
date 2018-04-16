@@ -2,14 +2,20 @@ from math import cos, sin
 
 
 class Vector:
-    def __init__(self, *args):
-        self.coordinates = list(args)
+    def __init__(self, *coordinates):
+        self.coordinates = list(coordinates)
 
     def __iter__(self):
         return iter(self.coordinates)
 
     def __add__(self, other):
         return Vector(*(x + other.coordinates[i] for i, x in enumerate(self.coordinates)))
+
+    def __sub__(self, other):
+        return self + -other
+
+    def __neg__(self):
+        return Vector(*(-c for c in self.coordinates))
 
     def __mul__(self, other):
         if isinstance(other, Vector):

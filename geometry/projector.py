@@ -13,10 +13,13 @@ class Projector:
             result.append(
                 Primitive(
                     Line(
-                        p.line.v1[:2] * reduce(lambda x, y: x * d / (y + d), p.line.v1.coordinates[2:], 1),
-                        p.line.v2[:2] * reduce(lambda x, y: x * d / (y + d), p.line.v2.coordinates[2:], 1)
+                        p.line.vectors[0][:2]
+                        * reduce(lambda x, y: x * d / (y + d), p.line.vectors[0].coordinates[2:], 1),
+                        p.line.vectors[1][:2]
+                        * reduce(lambda x, y: x * d / (y + d), p.line.vectors[1].coordinates[2:], 1)
                     ),
-                    p.color
+                    color=p.color,
+                    arrow=p.arrow
                 )
             )
         return result

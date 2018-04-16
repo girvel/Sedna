@@ -1,7 +1,7 @@
 import unittest
 from unittest import TestCase
 
-from geometry.cube import create_cube
+from geometry.models.cube import create_cube
 from geometry.vector import Vector
 
 
